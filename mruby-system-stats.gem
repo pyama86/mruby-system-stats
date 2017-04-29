@@ -1,0 +1,6 @@
+name: mruby-system-stats
+description: Stats class
+author: pyama86
+website: https://github.com/pyama86/mruby-system-stats
+protocol: git
+repository: https://github.com/pyama86/mruby-system-stats.git
