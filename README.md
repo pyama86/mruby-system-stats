@@ -13,13 +13,7 @@ end
 ```
 ## example
 ```ruby
-p Stats.hi
-#=> "hi!!"
-t = Stats.new "hello"
-p t.hello
-#=> "hello"
-p t.bye
-#=> "hello bye"
+puts Stats::Linux::CPU.current
 ```
 
 ## License
