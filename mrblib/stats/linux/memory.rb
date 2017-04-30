@@ -5,6 +5,7 @@ module Stats
         collect(file, 1)
       end
 
+      private
       def column_keys
         %i(
           total
@@ -14,16 +15,6 @@ module Stats
       end
 
       class << self
-        def read(file)
-          ::File.read(file).chomp.split("\n").each_with_object({}) do |line,r|
-            if line =~ /(.+):\s+([0-9]+) kB$/
-              k = $~[1].to_sym
-              v = $~[2].to_f
-              r[k] = v
-            end
-          end
-        end
-
         def current(stat_file='/proc/meminfo')
           memory = read(stat_file)
           total = memory[:MemTotal]
@@ -38,6 +29,17 @@ module Stats
                 end
           { total: total, use: use, percent: sprintf("%3.2f",  use / total * 100).to_f }
         end
+        private
+        def read(file)
+          ::File.read(file).chomp.split("\n").each_with_object({}) do |line,r|
+            if line =~ /(.+):\s+([0-9]+) kB$/
+              k = $~[1].to_sym
+              v = $~[2].to_f
+              r[k] = v
+            end
+          end
+        end
+
       end
     end
   end

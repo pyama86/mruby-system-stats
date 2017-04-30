@@ -8,12 +8,11 @@ module Stats
         collect(file)
       end
 
+      private
+
       def column_keys
         COLUMNS.keys
       end
-
-      private
-
       class << self
         def current(file='/proc/stat', sleep=1)
           before = parse_stats(file)
