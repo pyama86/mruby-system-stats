@@ -1,8 +1,8 @@
 module Stats
   module Linux
     class Memory < Base
-      def initialize(meminfo_file='/proc/meminfo')
-        collect(meminfo_file, 1)
+      def initialize(file='/proc/meminfo')
+        collect(file, 1)
       end
 
       def column_keys

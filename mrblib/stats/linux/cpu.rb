@@ -4,8 +4,8 @@ module Stats
       COLUMNS={ user: 0, sys: 1, nice: 2, idle:3 }
       COLUMNS.freeze
 
-      def initialize(stat_file='/proc/stat')
-        collect(stat_file)
+      def initialize(file='/proc/stat')
+        collect(file)
       end
 
       def column_keys
@@ -15,10 +15,10 @@ module Stats
       private
 
       class << self
-        def current(stat_file='/proc/stat', sleep=1)
-          before = parse_stats(stat_file)
+        def current(file='/proc/stat', sleep=1)
+          before = parse_stats(file)
           sleep sleep
-          after = parse_stats(stat_file)
+          after = parse_stats(file)
           calc(before, after)
         end
 
@@ -27,8 +27,8 @@ module Stats
           ::File.read(file).chomp.split("\n")[0].split
         end
 
-        def parse_stats(stat_file)
-          stat = read(stat_file)
+        def parse_stats(file)
+          stat = read(file)
           if stat.size < 8
             raise "invalid number of cpu fields"
           end
