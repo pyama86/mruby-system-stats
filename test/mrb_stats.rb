@@ -11,3 +11,8 @@ assert("Stats::Memory.current") do
   h = Stats::Memory.current
   assert_true h.is_a?(Hash)
 end
+
+assert("Stats::Disk.current") do
+  h = Stats::Disk.current
+  assert_true h.is_a?(Hash)
+end
