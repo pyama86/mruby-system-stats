@@ -7,6 +7,7 @@ MRuby::Gem::Specification.new('mruby-system-stats') do |spec|
   spec.add_dependency 'mruby-sysconf'
   spec.add_dependency 'mruby-onig-regexp'
   spec.add_dependency 'mruby-thread'
+  spec.add_dependency 'mruby-enum-ext'
   spec.add_test_dependency 'mruby-sprintf'
   spec.cc.flags << "-DMRB_THREAD_COPY_VALUES"
 end
